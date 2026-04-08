@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thành Viên - 12A5 THPT YD số 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="entry-gate" id="entry-gate" aria-hidden="false">
+    <button class="entry-card" id="entry-button" type="button" aria-label="Click để vào website kỷ yếu">
+      <span class="entry-sticker sticker-star">★</span>
+      <span class="entry-sticker sticker-heart">♡</span>
+      <span class="entry-sticker sticker-flower">✿</span>
+      <span class="entry-sticker sticker-spark">✦</span>
+      <span class="entry-sticker sticker-dot">●</span>
+      <span class="entry-sticker sticker-cloud">☁</span>
+      <span class="entry-sticker sticker-moon">☾</span>
+      <span class="entry-sticker sticker-bow">❀</span>
+      <strong>Chạm để mở kỷ niệm</strong>
+    </button>
+  </div>
+
+  <div class="page-transition" id="page-transition" aria-hidden="true">
+    <video class="transition-video" id="transition-video" src="media/page-transition.mp4" muted playsinline preload="auto"></video>
+    <div class="transition-loader"><span></span><span></span><span></span></div>
+    <p>Đang mở kỷ niệm...</p>
+  </div>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">12A5</span>
+        <span class="brand-copy">
+          <strong>Lớp 12A5 - THPT YD số 3</strong>
+          <small>Niên khóa 2024 - 2027</small>
+        </span>
+      </a>
+      <nav class="top-nav" aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="members.html">Thành viên</a>
+        <a href="moments.html">Khoảnh khắc</a>
+        <a href="guestbook.html">Lưu bút</a>
+      </nav>
+      <div class="device-chip" id="device-chip" aria-live="polite"></div>
+      <button class="menu-toggle" type="button" aria-label="Mở menu">Menu</button>
+    </header>
+
+    <main>
+      <section class="section-heading" id="members">
+        <p class="eyebrow">Trang thành viên</p>
+        <h2>Những gương mặt đã đi cùng nhau suốt năm cuối</h2>
+      </section>
+
+      <section class="auth-panel">
+        <article class="auth-card">
+          <div>
+            <p class="eyebrow">Trang riêng</p>
+            <h2>Mỗi thành viên có một trang giới thiệu riêng</h2>
+            <p class="auth-copy">Bấm vào từng thẻ để mở hồ sơ thành viên.</p>
+          </div>
+          <form class="login-form" id="login-form">
+            <label>Tên đăng nhập<input id="username-input" name="username" placeholder="member01 hoặc admin12a5" required></label>
+            <label>Mật khẩu<input id="password-input" name="password" type="password" placeholder="123456" required></label>
+            <div class="form-actions">
+              <button class="button primary" type="submit">Đăng nhập</button>
+              <button class="button ghost" id="logout-button" type="button">Đăng xuất</button>
+            </div>
+            <p class="form-hint">Tài khoản demo: <strong>member01 / 123456</strong>. Nếu cần quản trị, dùng <strong>admin12a5 / 123456</strong>.</p>
+          </form>
+          <div class="session-card" id="session-card">
+            <p class="session-role" id="session-role">Khách</p>
+            <h3 id="session-name">Chưa đăng nhập</h3>
+            <p id="session-status">Khách vẫn có thể xem toàn bộ trang giới thiệu thành viên.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="members-grid" id="members-grid"></section>
+    </main>
+  </div>
+
+  <aside class="music-widget is-open is-large" id="playlist">
+    <div class="widget-bar" id="widget-drag-handle">
+      <button class="widget-toggle" id="widget-toggle" type="button" aria-label="Thu gọn playlist">Playlist</button>
+      <div class="widget-actions">
+        <button class="widget-action" id="widget-size-toggle" type="button" aria-label="Đổi kích thước">Thu gọn</button>
+        <button class="widget-action" id="widget-bubble-toggle" type="button" aria-label="Ẩn thành bong bóng">Ẩn</button>
+      </div>
+    </div>
+    <div class="music-widget-panel">
+      <div class="player-now">
+        <div class="player-cover"><span>♪</span></div>
+        <p class="player-label">Now playing</p>
+        <h3 id="track-title">Có hẹn với thanh xuân</h3>
+        <span id="track-artist">MONSTAR</span>
+        <div class="player-controls">
+          <button id="prev-track" type="button">Trước</button>
+          <button id="play-toggle" type="button">Phát</button>
+          <button id="next-track" type="button">Sau</button>
+        </div>
+        <p class="player-hint" id="player-hint"></p>
+      </div>
+      <div class="playlist-list" aria-label="Danh sách bài hát">
+        <div class="playlist-head"><span>#</span><strong>Bài hát</strong><span>Time</span></div>
+        <button class="track-item is-active" type="button" data-title="Có hẹn với thanh xuân" data-artist="MONSTAR" data-src="music/có hẹn với thanh xuân.mp3"><span>01</span><span class="track-copy"><strong>Có hẹn với thanh xuân</strong><small>MONSTAR</small></span><small class="track-time">04:08</small></button>
+        <button class="track-item" type="button" data-title="Hẹn Lần Sau" data-artist="Bùi Công Nam" data-src="music/Hẹn Lần Sau.mp3"><span>02</span><span class="track-copy"><strong>Hẹn Lần Sau</strong><small>Bùi Công Nam</small></span><small class="track-time">04:12</small></button>
+        <button class="track-item" type="button" data-title="Người Gieo Mầm Xanh" data-artist="Hứa Kim Tuyền" data-src="music/Người Gieo Mầm Xanh.mp3"><span>03</span><span class="track-copy"><strong>Người Gieo Mầm Xanh</strong><small>Hứa Kim Tuyền</small></span><small class="track-time">04:33</small></button>
+        <button class="track-item" type="button" data-title="Như Ngày Hôm Qua" data-artist="Sơn Tùng M-TP" data-src="music/Như Ngày Hôm Qua.mp3"><span>04</span><span class="track-copy"><strong>Như Ngày Hôm Qua</strong><small>Sơn Tùng M-TP</small></span><small class="track-time">04:17</small></button>
+        <button class="track-item" type="button" data-title="Phép Màu" data-artist="MAYDAYs x Minh Tốc" data-src="music/Phép Màu (From Đàn Cá Gỗ Original Soundtrack).mp3"><span>05</span><span class="track-copy"><strong>Phép Màu</strong><small>MAYDAYs x Minh Tốc</small></span><small class="track-time">05:01</small></button>
+        <button class="track-item" type="button" data-title="Rực Rỡ Tháng Năm & Con Đường Hạnh Phúc" data-artist="Ký Ức Part 4" data-src="music/Rực Rỡ Tháng Năm & Con Đường Hạnh Phúc (Ký Ức Part 4).mp3"><span>06</span><span class="track-copy"><strong>Rực Rỡ Tháng Năm</strong><small>Ký Ức Part 4</small></span><small class="track-time">04:46</small></button>
+      </div>
+      <div class="resize-handle" id="widget-resize-handle" aria-hidden="true"></div>
+    </div>
+    <audio id="audio-player" preload="auto"></audio>
+    <button class="music-bubble" id="music-bubble" type="button" aria-label="Mở playlist">♪</button>
+  </aside>
+
+  <script src="js/class-members.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

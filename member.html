@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thành Viên - 12A5 THPT YD số 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="member-profile-page">
+  <div class="page-shell">
+    <header class="site-header profile-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">12A5</span>
+        <span class="brand-copy">
+          <strong>Lớp 12A5 - THPT YD số 3</strong>
+          <small>Niên khóa 2024 - 2027</small>
+        </span>
+      </a>
+      <nav class="top-nav top-nav-static" aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="members.html">Danh sách thành viên</a>
+        <a href="moments.html">Khoảnh khắc</a>
+        <a href="guestbook.html">Lưu bút</a>
+      </nav>
+    </header>
+
+    <main class="profile-main">
+      <section class="profile-hero">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar avatar-sky" id="profile-avatar">12</div>
+          <p class="profile-role" id="profile-role">Thành viên lớp</p>
+        </div>
+        <div class="profile-copy">
+          <p class="eyebrow">Hồ sơ thành viên</p>
+          <h1 id="profile-name">Đang tải...</h1>
+          <p class="profile-nickname" id="profile-nickname">Biệt danh</p>
+          <p class="profile-quote" id="profile-quote"></p>
+          <div class="profile-actions">
+            <a class="button primary" href="members.html">Quay lại danh sách</a>
+            <a class="button ghost" href="guestbook.html">Mở lưu bút lớp</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="profile-grid profile-grid-wide">
+        <article class="profile-card">
+          <p class="eyebrow">Thông tin</p>
+          <div class="profile-meta" id="profile-meta"></div>
+        </article>
+
+        <article class="profile-card" id="profile-editor-card" hidden>
+          <p class="eyebrow">Chỉnh sửa hồ sơ</p>
+          <form class="profile-edit-form" id="profile-edit-form">
+            <label id="profile-name-field" hidden>
+              Tên hiển thị
+              <input type="text" name="name" id="edit-name">
+            </label>
+            <label id="profile-nickname-field" hidden>
+              Biệt danh
+              <input type="text" name="nickname" id="edit-nickname">
+            </label>
+            <label>
+              Câu giới thiệu ngắn
+              <input type="text" name="quote" id="edit-quote">
+            </label>
+            <label>
+              Giới thiệu bản thân
+              <textarea name="bio" id="edit-bio" rows="5"></textarea>
+            </label>
+            <label>
+              Ảnh đại diện / ảnh giới thiệu
+              <input type="file" name="image" id="edit-image" accept="image/*">
+            </label>
+            <div class="profile-edit-actions">
+              <button class="button primary" type="submit">Lưu thay đổi</button>
+              <button class="button ghost" type="button" id="profile-reset-image">Xóa ảnh</button>
+            </div>
+            <p class="form-hint" id="profile-edit-hint">Bạn đang chỉnh sửa hồ sơ của chính mình.</p>
+          </form>
+        </article>
+
+        <article class="profile-card">
+          <p class="eyebrow">Giới thiệu</p>
+          <div class="profile-bio" id="profile-bio"></div>
+        </article>
+
+        <article class="profile-card">
+          <p class="eyebrow">Lưu bút riêng</p>
+          <div id="profile-guestbook" class="profile-feed"></div>
+        </article>
+
+        <article class="profile-card">
+          <p class="eyebrow">Khoảnh khắc đã đăng</p>
+          <div id="profile-moments" class="profile-feed"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <aside class="music-widget is-open is-large" id="playlist">
+    <div class="widget-bar" id="widget-drag-handle">
+      <button class="widget-toggle" id="widget-toggle" type="button" aria-label="Thu gọn playlist">Playlist</button>
+      <div class="widget-actions">
+        <button class="widget-action" id="widget-size-toggle" type="button" aria-label="Đổi kích thước">Thu gọn</button>
+        <button class="widget-action" id="widget-bubble-toggle" type="button" aria-label="Ẩn thành bong bóng">Ẩn</button>
+      </div>
+    </div>
+    <div class="music-widget-panel">
+      <div class="player-now">
+        <div class="player-cover"><span>♪</span></div>
+        <p class="player-label">Now playing</p>
+        <h3 id="track-title">Có hẹn với thanh xuân</h3>
+        <span id="track-artist">MONSTAR</span>
+        <div class="player-controls">
+          <button id="prev-track" type="button">Trước</button>
+          <button id="play-toggle" type="button">Phát</button>
+          <button id="next-track" type="button">Sau</button>
+        </div>
+        <p class="player-hint" id="player-hint"></p>
+      </div>
+      <div class="playlist-list" aria-label="Danh sách bài hát">
+        <div class="playlist-head"><span>#</span><strong>Bài hát</strong><span>Time</span></div>
+        <button class="track-item is-active" type="button" data-title="Có hẹn với thanh xuân" data-artist="MONSTAR" data-src="music/có hẹn với thanh xuân.mp3"><span>01</span><span class="track-copy"><strong>Có hẹn với thanh xuân</strong><small>MONSTAR</small></span><small class="track-time">04:08</small></button>
+        <button class="track-item" type="button" data-title="Hẹn Lần Sau" data-artist="Bùi Công Nam" data-src="music/Hẹn Lần Sau.mp3"><span>02</span><span class="track-copy"><strong>Hẹn Lần Sau</strong><small>Bùi Công Nam</small></span><small class="track-time">04:12</small></button>
+        <button class="track-item" type="button" data-title="Người Gieo Mầm Xanh" data-artist="Hứa Kim Tuyền" data-src="music/Người Gieo Mầm Xanh.mp3"><span>03</span><span class="track-copy"><strong>Người Gieo Mầm Xanh</strong><small>Hứa Kim Tuyền</small></span><small class="track-time">04:33</small></button>
+        <button class="track-item" type="button" data-title="Như Ngày Hôm Qua" data-artist="Sơn Tùng M-TP" data-src="music/Như Ngày Hôm Qua.mp3"><span>04</span><span class="track-copy"><strong>Như Ngày Hôm Qua</strong><small>Sơn Tùng M-TP</small></span><small class="track-time">04:17</small></button>
+        <button class="track-item" type="button" data-title="Phép Màu" data-artist="MAYDAYs x Minh Tốc" data-src="music/Phép Màu (From Đàn Cá Gỗ Original Soundtrack).mp3"><span>05</span><span class="track-copy"><strong>Phép Màu</strong><small>MAYDAYs x Minh Tốc</small></span><small class="track-time">05:01</small></button>
+        <button class="track-item" type="button" data-title="Rực Rỡ Tháng Năm & Con Đường Hạnh Phúc" data-artist="Ký Ức Part 4" data-src="music/Rực Rỡ Tháng Năm & Con Đường Hạnh Phúc (Ký Ức Part 4).mp3"><span>06</span><span class="track-copy"><strong>Rực Rỡ Tháng Năm</strong><small>Ký Ức Part 4</small></span><small class="track-time">04:46</small></button>
+      </div>
+      <div class="resize-handle" id="widget-resize-handle" aria-hidden="true"></div>
+    </div>
+    <audio id="audio-player" preload="auto"></audio>
+    <button class="music-bubble" id="music-bubble" type="button" aria-label="Mở playlist">♪</button>
+  </aside>
+
+  <script src="js/class-members.js"></script>
+  <script src="js/member-profile.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

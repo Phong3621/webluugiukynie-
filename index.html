@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kỷ Yếu 12A5 - THPT YD số 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="entry-gate" id="entry-gate" aria-hidden="false">
+    <button class="entry-card" id="entry-button" type="button" aria-label="Click để vào website kỷ yếu">
+      <span class="entry-sticker sticker-star">★</span>
+      <span class="entry-sticker sticker-heart">♡</span>
+      <span class="entry-sticker sticker-flower">✿</span>
+      <span class="entry-sticker sticker-spark">✦</span>
+      <span class="entry-sticker sticker-dot">●</span>
+      <span class="entry-sticker sticker-cloud">☁</span>
+      <span class="entry-sticker sticker-moon">☾</span>
+      <span class="entry-sticker sticker-bow">❀</span>
+      <strong>Chạm để mở kỷ niệm</strong>
+    </button>
+  </div>
+
+  <div class="page-transition" id="page-transition" aria-hidden="true">
+    <video class="transition-video" id="transition-video" src="media/page-transition.mp4" muted playsinline preload="auto"></video>
+    <div class="transition-loader">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p>Đang mở kỷ niệm...</p>
+  </div>
+
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#home">
+        <span class="brand-mark">12A5</span>
+        <span class="brand-copy">
+          <strong>Lớp 12A5 - THPT YD số 3</strong>
+          <small>Niên khóa 2024 - 2027</small>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Điều hướng chính">
+        <a href="index.html">Trang chủ</a>
+        <a href="members.html">Thành viên</a>
+        <a href="moments.html">Khoảnh khắc</a>
+        <a href="guestbook.html">Lưu bút</a>
+      </nav>
+
+      <div class="device-chip" id="device-chip" aria-live="polite"></div>
+      <button class="menu-toggle" type="button" aria-label="Mở menu">Menu</button>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <p class="eyebrow">Website kỷ yếu lớp 12</p>
+          <h1>Một phiên bản thanh xuân được giữ lại bằng ảnh, nhạc và những lời chưa kịp nói.</h1>
+          <p class="hero-text">
+            Một góc nhỏ để lưu lại ảnh lớp, những khoảnh khắc đáng nhớ và lời nhắn của tập thể 12A5 - THPT YD số 3 trước ngày chia tay.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="members.html">Xem thành viên</a>
+          </div>
+          <ul class="hero-meta">
+            <li>Thanh xuân lớp 12A5 - THPT YD số 3</li>
+            <li>Những kỷ niệm được lưu lại</li>
+            <li>3 năm thanh xuân</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <div class="yearbook-frame">
+            <div class="frame-label">Ảnh kỷ yếu trang chủ</div>
+            <div class="frame-placeholder">
+              <span>Để trống tạm thời</span>
+              <small>Thay bằng ảnh tập thể chính sau</small>
+            </div>
+          </div>
+          <div class="floating-note note-a">12A5 - THPT YD số 3</div>
+          <div class="floating-note note-b">Goodbye, classroom</div>
+        </div>
+      </section>
+
+      <section class="auth-panel">
+        <article class="auth-card">
+          <div>
+            <p class="eyebrow">Cùng viết tiếp kỷ yếu</p>
+            <h2>Đăng nhập để gửi lời nhắn, chia sẻ ảnh và bình luận cho những khoảnh khắc của lớp</h2>
+            <p class="auth-copy">
+              Chào mọi người, đây là website kỷ yếu của lớp 12A5 - THPT YD số 3. Mời mọi người cùng ghé xem và lưu lại những kỷ niệm đẹp.
+            </p>
+          </div>
+
+          <form class="login-form" id="login-form">
+            <label>
+              Tên đăng nhập
+              <input id="username-input" name="username" placeholder="Nhap taikhoan" required>
+            </label>
+            <label>
+              Mật khẩu
+              <input id="password-input" name="password" type="password" placeholder="nhapmatkhau" required>
+            </label>
+            <div class="form-actions">
+              <button class="button primary" type="submit">Đăng nhập</button>
+              <button class="button ghost" id="logout-button" type="button">Đăng xuất</button>
+            </div>
+            <p class="form-hint">
+              
+            </p>
+          </form>
+
+          <div class="session-card" id="session-card">
+            <p class="session-role" id="session-role">Khách</p>
+            <h3 id="session-name">Chưa đăng nhập</h3>
+            <p id="session-status">Khách vẫn có thể xem bài viết, ảnh và lưu bút đã được hiển thị trên website.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="spotlight-grid" aria-label="Điểm nhấn nhanh">
+        <article class="spotlight-card">
+          <p>Trang chủ</p>
+          <h2>Ảnh bìa lớn cùng slogan của lớp</h2>
+          <span>Mở đầu hành trình bằng một khung ảnh tập thể và tinh thần của lớp 12A5 - THPT YD số 3.</span>
+        </article>
+        <article class="spotlight-card">
+          <p>Thành viên</p>
+          <h2>Những gương mặt đã đi cùng nhau suốt năm cuối</h2>
+          <span>Mỗi cái tên là một mảnh ký ức nhỏ trong hành trình của lớp 12A5 - THPT YD số 3.</span>
+        </article>
+        <article class="spotlight-card">
+          <p>Khoảnh khắc</p>
+          <h2>Những bức ảnh, câu chuyện và tiếng cười</h2>
+          <span>Nơi lưu lại những buổi chụp hình, giờ ra chơi và ngày cuối cùng bên nhau.</span>
+        </article>
+        <article class="spotlight-card">
+          <p>Lưu bút</p>
+          <h2>Góc lời nhắn cuối cấp</h2>
+          <span>Những lời chúc, lời cảm ơn và điều chưa kịp nói trước ngày chia tay.</span>
+        </article>
+      </section>
+
+      <section class="section-heading">
+        <p class="eyebrow">Khám phá</p>
+        <h2>Từng phần của cuốn kỷ yếu được tách thành những trang riêng</h2>
+      </section>
+
+      <section class="spotlight-grid" aria-label="Đi tới từng trang">
+        <article class="spotlight-card">
+          <p>Trang riêng</p>
+          <h2>Thành viên</h2>
+          <span>Mỗi bạn có thẻ riêng và trang giới thiệu riêng.</span>
+          <a class="button ghost" href="members.html">Mở trang thành viên</a>
+        </article>
+        <article class="spotlight-card">
+          <p>Trang riêng</p>
+          <h2>Khoảnh khắc</h2>
+          <span>Xem ảnh, đăng ảnh, bình luận và kho ảnh lớp.</span>
+          <a class="button ghost" href="moments.html">Mở trang khoảnh khắc</a>
+        </article>
+        <article class="spotlight-card">
+          <p>Trang riêng</p>
+          <h2>Lưu bút</h2>
+          <span>Những lời nhắn cuối cấp được gom trong một trang riêng.</span>
+          <a class="button ghost" href="guestbook.html">Mở trang lưu bút</a>
+        </article>
+      </section>
+
+      <section class="section-heading" id="timeline">
+        <p class="eyebrow">Dòng thời gian</p>
+        <h2>Những cột mốc của lớp 12A5 từ ngày bắt đầu đến lời hẹn tương lai</h2>
+      </section>
+
+      <section class="timeline-shell" aria-label="Dòng thời gian lớp" id="timeline-list"></section>
+
+      <section class="section-heading" id="future-note">
+        <p class="eyebrow">Lời nhắn tương lai</p>
+        <h2>Gửi lại một điều cho phiên bản vài năm sau của chính mình và tập thể lớp</h2>
+      </section>
+
+      <section class="future-note-layout" aria-label="Khu lời nhắn tương lai">
+        <article class="composer-card">
+          <div>
+            <p class="eyebrow">Viết note</p>
+            <h3>Để lại một lời hẹn cho tương lai</h3>
+          </div>
+          <form id="future-note-form" class="entry-form">
+            <label>
+              Tiêu đề
+              <input name="title" placeholder="Ví dụ: Hẹn gặp lại năm 2030" required>
+            </label>
+            <label>
+              Gửi cho năm
+              <input name="targetYear" type="number" min="2026" max="2050" step="1" value="2030" required>
+            </label>
+            <label>
+              Lời nhắn
+              <textarea name="message" rows="4" placeholder="Mong rằng chúng ta vẫn giữ được liên lạc..." required></textarea>
+            </label>
+            <button class="button primary" type="submit">Gửi lời nhắn</button>
+            <p class="form-hint">Lời nhắn sẽ được lưu trên trình duyệt của bạn.</p>
+          </form>
+        </article>
+
+        <section class="future-note-shell" id="future-note-grid"></section>
+      </section>
+
+      <section class="section-heading" id="memory-video">
+        <p class="eyebrow">Video kỷ niệm</p>
+        <h2>Một góc dành riêng cho thước phim tổng hợp của lớp 12A5</h2>
+      </section>
+
+      <section class="memory-video-shell" aria-label="Khu video kỷ niệm">
+        <article class="memory-video-card">
+          <div class="memory-video-frame">
+            <video id="memory-video-player" controls preload="metadata">
+              <source src="media/ky-niem.mp4" type="video/mp4">
+              Trình duyệt của bạn không hỗ trợ phát video.
+            </video>
+          </div>
+          <div class="memory-video-copy">
+            <h3>Video kỷ niệm lớp</h3>
+            <p>
+              Khu vực này dùng để đặt video tổng hợp ảnh, hoạt động lớp và những lời chúc cuối cấp.
+              Nếu chưa có file chính thức, bạn có thể thay tạm bằng một video mp4 trong thư mục <strong>media</strong>.
+            </p>
+            <p class="form-hint">
+              Gợi ý file: <strong>media/ky-niem.mp4</strong>
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="admin-panel" id="admin-panel" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Quản trị</p>
+          <h2>Admin duyệt nội dung từ thành viên</h2>
+        </div>
+        <div class="admin-stats" id="admin-stats"></div>
+        <div class="admin-review-grid">
+          <article class="admin-review-card">
+            <h3>Khoảnh khắc chờ duyệt</h3>
+            <div id="admin-moments-list" class="admin-list"></div>
+          </article>
+          <article class="admin-review-card">
+            <h3>Lưu bút chờ duyệt</h3>
+            <div id="admin-guestbook-list" class="admin-list"></div>
+          </article>
+          <article class="admin-review-card">
+            <h3>Bình luận chờ duyệt</h3>
+            <div id="admin-comments-list" class="admin-list"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="member-modal" id="member-modal" hidden>
+    <div class="member-modal-backdrop" id="member-modal-backdrop"></div>
+    <article class="member-modal-card" role="dialog" aria-modal="true" aria-labelledby="member-modal-name">
+      <button class="member-modal-close" id="member-modal-close" type="button" aria-label="Đóng thông tin thành viên">×</button>
+      <div class="member-modal-avatar" id="member-modal-avatar">12</div>
+      <p class="member-modal-role" id="member-modal-role">Thành viên lớp</p>
+      <h3 id="member-modal-name">Tên thành viên</h3>
+      <p class="member-modal-nickname" id="member-modal-nickname">Biệt danh</p>
+      <p class="member-modal-quote" id="member-modal-quote">Câu nói yêu thích</p>
+      <div class="member-modal-meta" id="member-modal-meta"></div>
+    </article>
+  </div>
+
+  <aside class="music-widget is-open is-large" id="playlist">
+    <div class="widget-bar" id="widget-drag-handle">
+      <button class="widget-toggle" id="widget-toggle" type="button" aria-label="Thu gọn playlist">
+        Playlist
+      </button>
+      <div class="widget-actions">
+        <button class="widget-action" id="widget-size-toggle" type="button" aria-label="Đổi kích thước">
+          Thu gọn
+        </button>
+        <button class="widget-action" id="widget-bubble-toggle" type="button" aria-label="Ẩn thành bong bóng">
+          Ẩn
+        </button>
+      </div>
+    </div>
+
+    <div class="music-widget-panel">
+      <div class="player-now">
+        <div class="player-cover">
+          <span>♪</span>
+        </div>
+        <p class="player-label">Now playing</p>
+        <h3 id="track-title">Có hẹn với thanh xuân</h3>
+        <span id="track-artist">MONSTAR</span>
+        <div class="player-controls">
+          <button id="prev-track" type="button">Trước</button>
+          <button id="play-toggle" type="button">Phát</button>
+          <button id="next-track" type="button">Sau</button>
+        </div>
+        <p class="player-hint" id="player-hint">Website sẽ thử tự phát nhạc khi mở trang.</p>
+      </div>
+
+      <div class="playlist-list" aria-label="Danh sách bài hát">
+        <div class="playlist-head">
+          <span>#</span>
+          <strong>Bài hát</strong>
+          <span>Time</span>
+        </div>
+        <button class="track-item is-active" type="button" data-title="Có hẹn với thanh xuân" data-artist="MONSTAR" data-src="music/có hẹn với thanh xuân.mp3">
+          <span>01</span>
+          <span class="track-copy">
+            <strong>Có hẹn với thanh xuân</strong>
+            <small>MONSTAR</small>
+          </span>
+          <small class="track-time">04:08</small>
+        </button>
+        <button class="track-item" type="button" data-title="Hẹn Lần Sau" data-artist="Bùi Công Nam" data-src="music/Hẹn Lần Sau.mp3">
+          <span>02</span>
+          <span class="track-copy">
+            <strong>Hẹn Lần Sau</strong>
+            <small>Bùi Công Nam</small>
+          </span>
+          <small class="track-time">04:12</small>
+        </button>
+        <button class="track-item" type="button" data-title="Người Gieo Mầm Xanh" data-artist="Hứa Kim Tuyền" data-src="music/Người Gieo Mầm Xanh.mp3">
+          <span>03</span>
+          <span class="track-copy">
+            <strong>Người Gieo Mầm Xanh</strong>
+            <small>Hứa Kim Tuyền</small>
+          </span>
+          <small class="track-time">04:33</small>
+        </button>
+        <button class="track-item" type="button" data-title="Như Ngày Hôm Qua" data-artist="Sơn Tùng M-TP" data-src="music/Như Ngày Hôm Qua.mp3">
+          <span>04</span>
+          <span class="track-copy">
+            <strong>Như Ngày Hôm Qua</strong>
+            <small>Sơn Tùng M-TP</small>
+          </span>
+          <small class="track-time">04:17</small>
+        </button>
+        <button class="track-item" type="button" data-title="Phép Màu" data-artist="MAYDAYs x Minh Tốc" data-src="music/Phép Màu (From Đàn Cá Gỗ Original Soundtrack).mp3">
+          <span>05</span>
+          <span class="track-copy">
+            <strong>Phép Màu</strong>
+            <small>MAYDAYs x Minh Tốc</small>
+          </span>
+          <small class="track-time">05:01</small>
+        </button>
+        <button class="track-item" type="button" data-title="Rực Rỡ Tháng Năm & Con Đường Hạnh Phúc" data-artist="Ký Ức Part 4" data-src="music/Rực Rỡ Tháng Năm & Con Đường Hạnh Phúc (Ký Ức Part 4).mp3">
+          <span>06</span>
+          <span class="track-copy">
+            <strong>Rực Rỡ Tháng Năm</strong>
+            <small>Ký Ức Part 4</small>
+          </span>
+          <small class="track-time">04:46</small>
+        </button>
+      </div>
+
+      <div class="resize-handle" id="widget-resize-handle" aria-hidden="true"></div>
+    </div>
+
+    <audio id="audio-player" preload="auto"></audio>
+    <button class="music-bubble" id="music-bubble" type="button" aria-label="Mở playlist">♪</button>
+  </aside>
+
+  <script src="js/class-members.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
