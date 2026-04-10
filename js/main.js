@@ -115,6 +115,9 @@ const VIEWPORT_MARGIN = 8;
 const SECTION_TRANSITION_DURATION = 760;
 const PAGE_NAVIGATION_DELAY = 620;
 const ENTRY_SESSION_KEY = "kyyeu_entered_session_v1";
+const RESUME_ON_GESTURE_KEY = "kyyeu_resume_on_gesture_v1";
+
+let playbackUnlockBound = false;
 
 function readStorage(key, fallback) {
   try {
@@ -1052,25 +1055,63 @@ function savePlayerState() {
   });
 }
 
-async function playCurrentTrack() {
+function clearPlaybackUnlock() {
+  if (!playbackUnlockBound) {
+    return;
+  }
+  const handler = tryResumePlaybackFromGesture;
+  window.removeEventListener("touchstart", handler);
+  window.removeEventListener("pointerdown", handler);
+  window.removeEventListener("click", handler);
+  window.removeEventListener("keydown", handler);
+  playbackUnlockBound = false;
+}
+function bindPlaybackUnlock() {
+  if (playbackUnlockBound) {
+    return;
+  }
+  const handler = tryResumePlaybackFromGesture;
+  window.addEventListener("touchstart", handler, { passive: true });
+  window.addEventListener("pointerdown", handler, { passive: true });
+  window.addEventListener("click", handler);
+  window.addEventListener("keydown", handler);
+  playbackUnlockBound = true;
+}
+function tryResumePlaybackFromGesture() {
+  if (window.sessionStorage.getItem(RESUME_ON_GESTURE_KEY) !== "true") {
+    clearPlaybackUnlock();
+    return;
+  }
+  playCurrentTrack({ fromGesture: true });
+}
+async function playCurrentTrack(options = {}) {
   if (!audioPlayer) {
     return;
   }
-
+  const { fromGesture = false } = options;
   try {
     await audioPlayer.play();
     isPlaying = true;
     playToggle.textContent = "Tạm dừng";
     playerHint.textContent = "";
+    window.sessionStorage.removeItem(RESUME_ON_GESTURE_KEY);
+    clearPlaybackUnlock();
     savePlayerState();
   } catch {
     isPlaying = false;
     playToggle.textContent = "Phát";
-    playerHint.textContent = "Trình duyệt đang chặn tự phát. Bấm Phát một lần để bắt đầu nhạc.";
+    if (!fromGesture) {
+      window.sessionStorage.setItem(RESUME_ON_GESTURE_KEY, "true");
+      bindPlaybackUnlock();
+      playerHint.textContent = "Trình duyệt đang chặn tự phát. Chạm màn hình một lần để tiếp tục nhạc.";
+    } else {
+      window.sessionStorage.removeItem(RESUME_ON_GESTURE_KEY);
+      clearPlaybackUnlock();
+      playerHint.textContent = "Không thể phát nhạc trên thiết bị này.";
+    }
     savePlayerState();
   }
 }
-
 function enterSite() {
   if (hasEnteredSite) {
     return;
@@ -1092,6 +1133,8 @@ function pauseCurrentTrack() {
   audioPlayer?.pause();
   isPlaying = false;
   playToggle.textContent = "Phát";
+  window.sessionStorage.removeItem(RESUME_ON_GESTURE_KEY);
+  clearPlaybackUnlock();
   savePlayerState();
 }
 
@@ -1113,29 +1156,34 @@ function restorePlayerState() {
   if (!audioPlayer || trackItems.length === 0) {
     return;
   }
-
+  audioPlayer.setAttribute("playsinline", "");
+  if ("webkitPlaysInline" in audioPlayer) {
+    audioPlayer.webkitPlaysInline = true;
+  }
   const state = readStorage(STORAGE_KEYS.playerState, null);
   if (!state) {
+    if (window.sessionStorage.getItem(RESUME_ON_GESTURE_KEY) === "true") {
+      bindPlaybackUnlock();
+    }
     return;
   }
-
   const index = Number.isInteger(state.trackIndex) ? state.trackIndex : 0;
   renderTrack(clamp(index, 0, trackItems.length - 1));
-
   const resumePlayback = () => {
     if (typeof state.currentTime === "number" && Number.isFinite(state.currentTime)) {
       audioPlayer.currentTime = Math.max(0, state.currentTime);
     }
-
     if (window.localStorage.getItem(STORAGE_KEYS.musicUnlocked) === "true" && state.isPlaying) {
-      playCurrentTrack();
+      playCurrentTrack({ fromGesture: false });
     }
   };
-
   if (audioPlayer.readyState >= 1) {
     resumePlayback();
   } else {
     audioPlayer.addEventListener("loadedmetadata", resumePlayback, { once: true });
+  }
+  if (window.sessionStorage.getItem(RESUME_ON_GESTURE_KEY) === "true") {
+    bindPlaybackUnlock();
   }
 }
 
